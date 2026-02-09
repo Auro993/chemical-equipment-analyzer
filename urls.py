@@ -1,6 +1,12 @@
-from django.urls import path
-from .views import upload_csv
+from django.contrib import admin
+from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Backend Running Successfully")
 
 urlpatterns = [
-    path('upload-csv/', upload_csv, name='upload_csv'),
+    path('', home),   # 👈 ADD THIS
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
 ]
